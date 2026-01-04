@@ -1,0 +1,10 @@
+# Ignore compiled binaries
+bin/
+build/
+*.exe
+*.o
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+.vscode/
