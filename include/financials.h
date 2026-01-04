@@ -13,4 +13,4 @@ Money calculate_compound_interest(const InvestmentConfig *config, int years);
 Money calculate_total_invested(const InvestmentConfig *config, int years);
 Money dollars_to_cents(double dollars);
 void print_money(Money amount_cents);
-#endif // FINANCIALS_H
+#endif 
