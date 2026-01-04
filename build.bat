@@ -1,30 +1,23 @@
 @echo off
-REM --- Настройваме конзолата да поддържа кирилица (UTF-8) ---
-chcp 65001 > nul
+REM --- Windows Build Script (ASCII Safe Mode) ---
 
-REM --- Прост скрипт за изграждане под Windows ---
-
-REM 1. Създаване на директория, ако не съществуват
-REM (bin = за изпълнимия файл)
+REM 1. Create directories
 if not exist bin mkdir bin
 
-REM 2. Компилиране на кода
-echo.
-echo Компилиране на проекта...
+REM 2. Compile
+echo Compiling project...
 gcc src/main.c src/financials.c -Iinclude -o bin/millionaire_calc.exe
 
-REM 3. Проверка дали компилацията е успешна
-REM %errorlevel% е променлива, която пази резултата от последната команда (GCC)
-REM 0 = Успех, Всичко друго = Грешка
+REM 3. Check for errors
 if %errorlevel% neq 0 (
-    echo.
-    echo [ГРЕШКА] Компилацията беше неуспешна!
-    echo Моля, проверете кода за грешки.
+    echo [ERROR] Compilation failed!
+    echo Please check your code.
+    pause
     exit /b %errorlevel%
 )
 
-echo [УСПЕХ] Изграждането завърши успешно.
+echo [SUCCESS] Compilation complete. Starting app...
 echo ==========================================
 
-REM 4. Стартиране на програмата веднага
+REM 4. Run the app
 .\bin\millionaire_calc.exe
